@@ -1,7 +1,11 @@
-
+import {useState,useEffect} from 'react';
+import axios from 'axios';
+import MovieList from '../MovieList/MovieList';
+import '../Home/Home.css';
 function Home(){
+    const [data,setData]= useState([]);
 
-    const getAllRecipes = async () => {
+    const getAllMovies = async () => {
        
         return await axios.get(`https://movies-manar123.herokuapp.com/trending`)
             .then(result => {
@@ -10,13 +14,19 @@ function Home(){
             }).catch((err) => {
                 console.log(err);
             })
+        }
+            useEffect(() => {
+                void (async () => {
+                    let data = await getAllMovies();
+                    setData(data);
+                })();
+            }, []);
 
     return (
         <>
-         <p> Movies list</p>
+         <MovieList data= {data} />
         </>
     )
 }
-
 
 export default Home;

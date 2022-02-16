@@ -1,16 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-import {Route,Routes,Switch} from 'react-router-dom';
-import Home from './components/Home/Home';
+import { Route, Routes } from 'react-router-dom';
 
+
+import Home from './components/Home/Home';
+// import Fav from './components/favPage/FavPage';
+import  Navbar  from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <Routes>
-      
-       <Route path='/trending'  element={<Home/>} /> 
-     
-    </Routes>
+    <div>
+       {/* <Navbar/> */}
+      <Routes>
+       
+          <Route path='/' exact  element={<Home/>} />
+          {/* <Route path='/favorite' exact element={<Fav/>} /> */}
+        
+      </Routes>
+    </div>
   );
 }
 
